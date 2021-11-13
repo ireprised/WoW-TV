@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 const SinglePackage = (props) => {
     const {_id,name, des,price} = props.pg || {};
     const history= useHistory()
-
+    
   const handleDetails=(key)=>{
       const uri= `/details/${key}`
       history.push(uri)

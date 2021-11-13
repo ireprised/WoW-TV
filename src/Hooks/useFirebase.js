@@ -84,7 +84,9 @@ const useFirebase = () => {
         }).catch((error) => {
             // An error happened.
         })
-            .finally(() => setIsLoading(false));
+        .finally(() => {
+            setIsLoading(false);
+        });
     }
 
     const saveUser = (email, displayName) => {

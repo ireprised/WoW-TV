@@ -18,7 +18,7 @@ const OrderData = () => {
         fetch(url)
         .then(res=>res.json())
         .then(data=>setOrders(data))
-    },[])
+    },[user.email])
     return (
         <div>
             <h3>Total Order here of you is :{orders.length}</h3>

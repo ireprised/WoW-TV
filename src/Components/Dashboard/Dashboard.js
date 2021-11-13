@@ -6,19 +6,13 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Button} from '@mui/material';
 import OrderData from './OrderData/OrderData';
 import {
-    BrowserRouter as Router,
+    
     Switch,
     Route,
     Link,
@@ -36,7 +30,7 @@ function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   let { path, url } = useRouteMatch();
-  const {admin} = useAuth();
+  const {admin,logout} = useAuth();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -54,14 +48,32 @@ function Dashboard(props) {
       
             
      <Divider />
-    <Link to="/explore" style={{ textDecoration: 'none', color: 'black'}}><Button color="inherit">Explore</Button></Link><br/>
-    <Link style={{ textDecoration: 'none', color: 'black'}} to={`${url}`}><Button color="inherit">Dashboard</Button></Link><br/>
+     <Box style={{textAlign:'center'}}>
+        <Link to="/explore" style={{ textDecoration: 'none', color: 'black'}}><Button color="inherit">Explore</Button></Link><br/>
+        <Link to="/" style={{ textDecoration: 'none', color: 'black'}}><Button color="inherit">Home</Button></Link><br/> 
+     </Box>
+     {
+      !admin && <Box style={{textAlign:'center'}}>
+          <Link style={{ textDecoration: 'none', color: 'black'}} to={`${url}`}><Button color="inherit">Manage orders</Button></Link><br/>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/review`}><Button color="inherit">Make Review</Button></Link><br/>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/pay`}><Button color="inherit">pay</Button></Link><br/>
+          <Link style={{ textDecoration: 'none', color: 'black' }} ><Button onClick={logout} color="inherit">Logout</Button></Link><br/>
+
+          
+              </Box>
+    }
+    
+    
     {
-      admin && <Box>
-        <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/makeadmin`}><Button color="inherit">Make Admin</Button></Link><br/>
-    <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addpackages`}><Button color="inherit">Add Package</Button></Link><br/>
-     
-      </Box>
+      admin && <Box style={{textAlign:'center'}}>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/manageorders`}><Button color="inherit">Manage all Orders</Button></Link><br/>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/makeadmin`}><Button color="inherit">Make Admin</Button></Link><br/>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/addpackages`}><Button color="inherit">Add Package</Button></Link><br/>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/managepackages`}><Button color="inherit">Manage Packages</Button></Link><br/>
+          <Link style={{ textDecoration: 'none', color: 'black' }} ><Button onClick={logout} color="inherit">Logout</Button></Link><br/>
+
+          
+              </Box>
     }
       {/* <List>
         {['pay', 'My Orders', 'Review', 'Logout'].map((text, index) => (
