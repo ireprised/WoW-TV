@@ -27,6 +27,7 @@ import {
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import AddPackages from './AddPackages/AddPackages';
 import useAuth from '../../Hooks/useAuth';
+import AdminRoute from '../Login/AdminRoute/AdminRoute';
 
 
 const drawerWidth = 240;
@@ -159,12 +160,12 @@ function Dashboard(props) {
                     <Route exact path={path}>
                         <OrderData></OrderData>
                     </Route>
-                    <Route path={`${path}/makeadmin`}>
+                    <AdminRoute path={`${path}/makeadmin`}>
                         <MakeAdmin></MakeAdmin>
-                    </Route>
-                    <Route path={`${path}/addpackages`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/addpackages`}>
                         <AddPackages></AddPackages>
-                    </Route>
+                    </AdminRoute>
                 </Switch>
                
         
