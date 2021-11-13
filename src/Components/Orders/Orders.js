@@ -17,7 +17,7 @@ const Orders = () => {
     const {user} =useAuth(); 
    
  useEffect(() =>
-      fetch("http://localhost:5000/packages")
+      fetch("https://mighty-retreat-73527.herokuapp.com/packages")
       .then(res => res.json())
       .then(data=>setDetails(data))
     ,[])
@@ -43,7 +43,7 @@ useEffect(() =>{
 const { register, handleSubmit,reset } = useForm();
   const onSubmit = data => {
     console.log(data);
-      axios.post('http://localhost:5000/orders',data)
+      axios.post('https://mighty-retreat-73527.herokuapp.com/orders',data)
       .then(res=>{
         if(res.data.insertedId){
             setbookingSuccess(true)
