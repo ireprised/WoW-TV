@@ -22,6 +22,8 @@ import MakeAdmin from './MakeAdmin/MakeAdmin';
 import AddPackages from './AddPackages/AddPackages';
 import useAuth from '../../Hooks/useAuth';
 import AdminRoute from '../Login/AdminRoute/AdminRoute';
+import Pay from './Pay/Pay';
+import Reviews from './Reviews/Reviews';
 
 
 const drawerWidth = 240;
@@ -55,7 +57,7 @@ function Dashboard(props) {
      {
       !admin && <Box style={{textAlign:'center'}}>
           <Link style={{ textDecoration: 'none', color: 'black'}} to={`${url}`}><Button color="inherit">Manage orders</Button></Link><br/>
-          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/review`}><Button color="inherit">Make Review</Button></Link><br/>
+          <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/reviews`}><Button color="inherit">Make Review</Button></Link><br/>
           <Link style={{ textDecoration: 'none', color: 'black' }} to={`${url}/pay`}><Button color="inherit">pay</Button></Link><br/>
           <Link style={{ textDecoration: 'none', color: 'black' }} ><Button onClick={logout} color="inherit">Logout</Button></Link><br/>
 
@@ -171,6 +173,12 @@ function Dashboard(props) {
         <Switch>
                     <Route exact path={path}>
                         <OrderData></OrderData>
+                    </Route>
+                    <Route path={`${path}/pay`}>
+                        <Pay></Pay>
+                    </Route>
+                    <Route path={`${path}/reviews`}>
+                        <Reviews></Reviews>
                     </Route>
                     <AdminRoute path={`${path}/makeadmin`}>
                         <MakeAdmin></MakeAdmin>

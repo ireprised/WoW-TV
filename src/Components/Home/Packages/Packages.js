@@ -15,7 +15,7 @@ const Packages = () => {
             <Typography variant="h4" sx={{ fontWeight: 600, color: '#ffff', textAlign: 'center', p: 2 }}>Our Services</Typography>
             <Grid container spacing={3} >
             {
-                packages.map(pg => <SinglePackage key={pg._id} pg={pg}></SinglePackage>)
+                packages?.slice(0,6).map(pg => <SinglePackage key={pg._id} pg={pg}></SinglePackage>)
             }
             </Grid>
             

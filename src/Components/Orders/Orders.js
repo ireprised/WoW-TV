@@ -1,12 +1,13 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import { Alert, Container, Paper, Typography } from '@mui/material';
+import { Alert, Container, IconButton, Paper, Typography } from '@mui/material';
 import bg from '../../images/bg.png'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import useAuth from '../../Hooks/useAuth';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 
 const Orders = () => {
@@ -15,17 +16,16 @@ const Orders = () => {
     const [bookingSuccess,setbookingSuccess] = useState(false)
     const [specificDetail,setSpecificDetail] = useState([])
     const {user} =useAuth(); 
-   
  useEffect(() =>
       fetch("https://mighty-retreat-73527.herokuapp.com/packages")
       .then(res => res.json())
       .then(data=>setDetails(data))
     ,[])
 
-
+console.log(user);
 useEffect(() =>{
     if(details.length>0){
-        const matchedData= details.find(detail=> detail._id=id)
+        const matchedData= details.find(detail=> detail._id==id)
         setSpecificDetail(matchedData);
         console.log(matchedData)
         
@@ -75,6 +75,9 @@ const { register, handleSubmit,reset } = useForm();
     return (
         <div style={style}>
         <Container>
+                <IconButton href="/" rel="noopener noreferrer">
+                    <KeyboardBackspaceIcon></KeyboardBackspaceIcon>
+                </IconButton>
             <Grid container spacing={2} sx={{ alignItems: 'center' }}>
                     <Grid item xs={12} sm={12} md={6} lg={6}> 
                         <Paper sx={{ p: 2, textAlign: 'center', backgroundColor:'gray' }} variant="outlined">
@@ -87,11 +90,11 @@ const { register, handleSubmit,reset } = useForm();
                     <Grid item xs={12} sm={12} md={6} lg={6}>
                     {bookingSuccess && <Alert severity="success" >Booked Succesfully</Alert>}
                             <form onSubmit={handleSubmit(onSubmit)} >
-                                <input style={{width:'100%', padding:'20px' , backgroundColor:'black', color:'white', borderRadius:'10px', marginBottom:'8px'}}type="text" {...register("package_name")} defaultValue={specificDetail?.name} />
-                                <input style={{width:'100%', padding:'20px' , backgroundColor:'black', color:'white', borderRadius:'10px', marginBottom:'8px'}}type="number" {...register("price")} defaultValue={specificDetail?.price} />
-                                <input style={{width:'100%', padding:'20px' , backgroundColor:'black', color:'white', borderRadius:'10px', marginBottom:'8px'}}type="text" {...register("name")} defaultValue={user?.name} />
-                                <input style={{width:'100%', padding:'20px' , backgroundColor:'black', color:'white', borderRadius:'10px', marginBottom:'8px'}}type="email" {...register("email")} defaultValue={user?.email} />
-                                <input style={{width:'100%', padding:'20px' , backgroundColor:'black', color:'white', borderRadius:'10px', marginBottom:'8px'}}type="text" {...register("address")} defaultValue="give your address" />
+                                <input style={{width:'100%', padding:'20px' , backgroundColor:'black', color:'white', borderRadius:'10px', marginBottom:'8px'}}type="text" {...register("package_name")} defaultValue={specificDetail?.name} required/>
+                                <input style={{width:'100%', padding:'20px' , backgroundColor:'black', color:'white', borderRadius:'10px', marginBottom:'8px'}}type="number" {...register("price")} defaultValue={specificDetail?.price} required/>
+                                <input style={{width:'100%', padding:'20px' , backgroundColor:'black', color:'white', borderRadius:'10px', marginBottom:'8px'}}type="text" {...register("name")} defaultValue={user?.displayName} required/>
+                                <input style={{width:'100%', padding:'20px' , backgroundColor:'black', color:'white', borderRadius:'10px', marginBottom:'8px'}}type="email" {...register("email")} defaultValue={user?.email} required/>
+                                <input style={{width:'100%', padding:'20px' , backgroundColor:'black', color:'white', borderRadius:'10px', marginBottom:'8px'}}type="text" {...register("address")} defaultValue="give your address" required/>
                                 <input type="submit" style={{padding:'10px', backgroundColor:'black', color:'white' , borderRadius:'10px'}} defaultValue="Place Order" />
                             </form>
                     </Grid>

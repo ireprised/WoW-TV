@@ -7,18 +7,43 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
+import { Alert, Button } from '@mui/material';
+
+
 
 const OrderData = () => {
     const { user } = useAuth()
     const [orders, setOrders] = useState([])
-
+ 
     useEffect(()=>{
         const url = `https://mighty-retreat-73527.herokuapp.com/orders?email=${user.email}`
         fetch(url)
         .then(res=>res.json())
         .then(data=>setOrders(data))
     },[user.email])
+    
+    const handleDelete = (_id) => {
+
+      const proceed = window.confirm('Are you sure, you want to delete?');
+        if (proceed) {
+          const url = `http://localhost:5000/orders/${_id}`
+          fetch(url,{
+              method: 'DELETE'
+  
+          })
+          .then(res => res.json())
+          .then(data=>{
+              if(data.deletedCount>0){
+                const remainingOrders = orders.filter(order => order._id !==_id);
+                setOrders(remainingOrders);
+                <Alert severity="warning">Deleted successfully!</Alert>
+              }
+          })
+        }
+
+
+      
+    }
     return (
         <div>
             <h3>Total Order here of you is :{orders.length}</h3>
@@ -38,12 +63,13 @@ const OrderData = () => {
               key={row._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
+              
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
               <TableCell align="right">{row.package_name}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
-              <TableCell align="right">{row.carbs}<Button sx={{backgroundColor:'red'}} variant='contained'>Delete</Button></TableCell>
+              <TableCell align="right"><Button onClick={()=>handleDelete(row._id)} sx={{backgroundColor:'red'}} variant='contained'>Delete</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>
