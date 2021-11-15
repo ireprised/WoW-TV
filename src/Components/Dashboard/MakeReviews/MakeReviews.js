@@ -41,7 +41,7 @@ const MakeReviews = () => {
         const name = nameRef.current.value;
         const newReview = {review,currentValue,name}
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://mighty-retreat-73527.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

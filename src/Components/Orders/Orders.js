@@ -54,7 +54,14 @@ const { register, handleSubmit,reset } = useForm();
   };
 
 
-
+  const styleForPaper={
+      paperContainer: {
+        backgroundImage: `url(${specificDetail?.img})`,
+        opacity: 1,
+        backgroundRepeat: 'no-repat',
+        height: '75%'
+    }
+  }
 
 
 
@@ -72,18 +79,20 @@ const { register, handleSubmit,reset } = useForm();
         marginTop: 10,
         borderRadius:20       
     }
+    
     return (
         <div style={style}>
         <Container>
                 <IconButton href="/" rel="noopener noreferrer">
-                    <KeyboardBackspaceIcon></KeyboardBackspaceIcon>
+                    <KeyboardBackspaceIcon></KeyboardBackspaceIcon> back to home
                 </IconButton>
             <Grid container spacing={2} sx={{ alignItems: 'center' }}>
                     <Grid item xs={12} sm={12} md={6} lg={6}> 
-                        <Paper sx={{ p: 2, textAlign: 'center', backgroundColor:'gray' }} variant="outlined">
+                        <Paper style={styleForPaper.paperContainer} sx={{ p: 2, textAlign: 'center', backgroundColor:'gray' }} variant="outlined">
                                 <Typography variant="h5" color="#ffff">{specificDetail?.name}</Typography>
-                                <Typography variant="h6" color="#ffff">{specificDetail?.des}</Typography>
-                                <Typography variant="subtitle" sx={{ display: 'block', my: 2,  }} >Price: ${specificDetail?.price}</Typography>
+                                <Typography variant="h6" color="#ffff">Product Detail : {specificDetail?.des}</Typography>
+                                <Typography variant="h6" color="#ffff">Access on : {specificDetail?.access}</Typography>
+                                <Typography variant="h3" sx={{ display: 'block', my: 2, color:'white' }} >Price : ${specificDetail?.price}</Typography>
                         </Paper>   
                     </Grid>
                     
