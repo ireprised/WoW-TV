@@ -28,6 +28,7 @@ const Navigation = () => {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     WoW TV
                 </Typography>
+                <Link style={{ textDecoration: 'none', color: 'white' }} to="/"><Button color="inherit">Home</Button></Link>
                 <Link style={{ textDecoration: 'none', color: 'white' }} to="/explore"><Button color="inherit">Explore</Button></Link>
                     {
                         user?.email ?
