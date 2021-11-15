@@ -4,41 +4,92 @@
       "name": "1 day non-stop",
       "des": "One Event Live",
       "price": 2,
-      "access": "android"
+      "access": "android",
+      "img" : "https://i.ibb.co/bHFgjbV/gr-fa.png"
     },
     {
       "id": 2,
       "name": "3 days super",
       "des": "2 Shows with 2 live",
       "price": 10,
-      "access": "android smarttv"
+      "access": "android smarttv",
+      "img" : "https://i.ibb.co/jyz9BSq/ha-fa.png"
     },
     {
       "id": 3,
       "name": "7 days rider",
       "des": "5 Shows with 3 live",
       "price": 30,
-      "access": "android smart tv roku"
+      "access": "android smart tv roku",
+      "img" : "https://i.ibb.co/hgT7NPq/wo-fa.png"
     },
     {
       "id": 4,
       "name": "15 days sporty",
       "des": "8 Shows 5 live",
       "price": 60,
-      "access": "android smart tv roku kodi"
+      "access": "android smart tv roku kodi",
+      "img" : "https://i.ibb.co/0ckd0Rx/ba-fa.png"
     },
     {
       "id": 5,
       "name": "30 days rock",
       "des": "10 shows 6 live",
       "price": 90,
-      "access": "android smart tv roku kodi web-cross"
+      "access": "android smart tv roku kodi web-cross",
+      "img" : "https://i.ibb.co/Z6VRZMr/aq-fa.png"
     },
     {
       "id": 6,
       "name": "45 days fun",
       "des": "10 shows 10 live",
       "price": 120,
-      "access": "android smarttv roku kodi web-cross appletv"
+      "access": "android smarttv roku kodi web-cross appletv",
+      "img" : "https://i.ibb.co/1QcX0sm/sp-fa.png"
+    },
+    {
+      "id": 7,
+      "name": "60 days rock",
+      "des": "20 shows 8 live",
+      "price": 120,
+      "access": "android smart tv roku kodi web-cross and iOS",
+      "img" : "https://i.ibb.co/2PgJYQC/ca-fa.png"
+    },
+    {
+      "id": 8,
+      "name": "90 days rock",
+      "des": "50 shows 10 live",
+      "price": 150,
+      "access": "android smart tv roku kodi web-cross and iOS ,Tygen",
+      "img" : "https://i.ibb.co/LdBbsc2/im-fa2.png"
+    },
+    {
+      "id": 9,
+      "name": "120 days rock",
+      "des": "80 shows 8 live",
+      "price": 180,
+      "access": "android smart tv roku kodi web-cross and iOS and LiveOs",
+      "img" : "https://i.ibb.co/353KS72/th-fa.png"
+    },
+    {
+      "id": 10,
+      "name": "150 days rock",
+      "des": "unlimited shows 20 live",
+      "price": 250,
+      "access": "android smart tv roku kodi web-cross and iOS",
+      "img" : "https://i.ibb.co/vqQh9d1/su-fa.png"
     }
   ]
+
+
+
+
+  
+
+
+
+
+
+
+
+
