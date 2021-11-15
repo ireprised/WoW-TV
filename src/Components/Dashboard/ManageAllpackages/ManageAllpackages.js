@@ -11,22 +11,22 @@ import { Alert, Button } from '@mui/material';
 
 
 
-const OrderData = () => {
+const ManageAllpackages = () => {
     const { user } = useAuth()
-    const [orders, setOrders] = useState([])
+    const [packages, setPackages] = useState([])
  
     useEffect(()=>{
-        const url = `https://mighty-retreat-73527.herokuapp.com/orders?email=${user.email}`
+        const url = `https://mighty-retreat-73527.herokuapp.com/packages`
         fetch(url)
         .then(res=>res.json())
-        .then(data=>setOrders(data))
+        .then(data=>setPackages(data))
     },[user.email])
     
     const handleDelete = (_id) => {
 
       const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
-          const url = `https://mighty-retreat-73527.herokuapp.com/orders/${_id}`
+          const url = `https://mighty-retreat-73527.herokuapp.com/packages/${_id}`
           fetch(url,{
               method: 'DELETE'
   
@@ -34,8 +34,8 @@ const OrderData = () => {
           .then(res => res.json())
           .then(data=>{
               if(data.deletedCount>0){
-                const remainingOrders = orders.filter(order => order._id !==_id);
-                setOrders(remainingOrders);
+                const remainingPackages = packages.filter(pg => pg._id !==_id);
+                setPackages(remainingPackages);
                 <Alert severity="warning">Deleted successfully!</Alert>
               }
           })
@@ -46,7 +46,7 @@ const OrderData = () => {
     }
     return (
         <div>
-            <h3>Total Order here of you is :{orders.length}</h3>
+            <h3>Total packages is {packages.length}</h3>
             <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -58,7 +58,7 @@ const OrderData = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {orders.map((row) => (
+          {packages.map((row) => (
             <TableRow
               key={row._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -67,7 +67,7 @@ const OrderData = () => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.package_name}</TableCell>
+              <TableCell align="right">{row.name}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
               <TableCell align="right"><Button onClick={()=>handleDelete(row._id)} sx={{backgroundColor:'red'}} variant='contained'>Delete</Button></TableCell>
             </TableRow>
@@ -79,4 +79,4 @@ const OrderData = () => {
     );
 };
 
-export default OrderData;
+export default ManageAllpackages;

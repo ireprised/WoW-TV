@@ -11,12 +11,12 @@ import { Alert, Button } from '@mui/material';
 
 
 
-const OrderData = () => {
+const ManageAllorder = () => {
     const { user } = useAuth()
     const [orders, setOrders] = useState([])
  
     useEffect(()=>{
-        const url = `https://mighty-retreat-73527.herokuapp.com/orders?email=${user.email}`
+        const url = `https://mighty-retreat-73527.herokuapp.com/orders`
         fetch(url)
         .then(res=>res.json())
         .then(data=>setOrders(data))
@@ -46,7 +46,7 @@ const OrderData = () => {
     }
     return (
         <div>
-            <h3>Total Order here of you is :{orders.length}</h3>
+            <h3>Total Order here is {orders.length}</h3>
             <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -79,4 +79,4 @@ const OrderData = () => {
     );
 };
 
-export default OrderData;
+export default ManageAllorder;
