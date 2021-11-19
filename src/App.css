@@ -1,7 +1,18 @@
 .App {
   padding: 10px 50px;
 }
+body {
+  background-image: url("./images/main.jpg");
 
+  /* Full height */
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(194, 202, 212, 0.9);
+  background-blend-mode: soft-light;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
